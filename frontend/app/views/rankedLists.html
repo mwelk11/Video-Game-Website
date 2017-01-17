@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/rankedLists.css">
+    </head>
+    <div class="container">
+        <section class="jumbotron center"></section>
+    </div>
+    <div class="table-responsive">
+        <table class="table" id="gameTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Publisher</th>
+                    <th>Genre</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="game in games">
+                    <td>{{ game.title }}</td>
+                    <td>{{ game.publisher }}</td>
+                    <td>{{ game.genre }}</td>
+                    <td>{{ game.rating }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</html>
