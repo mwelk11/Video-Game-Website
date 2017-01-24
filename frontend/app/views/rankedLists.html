@@ -6,22 +6,30 @@
     <div class="container">
         <section class="jumbotron center"></section>
     </div>
-    <div class="table-responsive">
-        <table class="table" id="gameTable">
+    <div class="table-responsive" ng-init="getGames()">
+        <table class="table table-striped table-bordered" id="gameTable">
             <thead>
                 <tr>
                     <th>Title</th>
                     <th>Publisher</th>
                     <th>Genre</th>
+                    <th>Year</th>
                     <th>Rating</th>
+                    <th>Reviews</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="game in games">
-                    <td>{{ game.title }}</td>
-                    <td>{{ game.publisher }}</td>
-                    <td>{{ game.genre }}</td>
-                    <td>{{ game.rating }}</td>
+                    <td>{{ game.Title }}</td>
+                    <td>{{ game.Publisher }}</td>
+                    <td>{{ game.Genre }}</td>
+                    <td>{{ game.Year }}</td>
+                    <td>{{ game.Rating }}</td>
+                    <td>
+                        <img src="../images/GamespotLogo.png">
+                        <img src="../images/IgnLogo.png">
+                        <img src="../images/MetacriticLogo.png">
+                    </td>
                 </tr>
             </tbody>
         </table>

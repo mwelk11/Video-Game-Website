@@ -31,10 +31,14 @@ body {
 }
 
 /* Custom page footer */
-.footer {
+.footer div {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+}
+
+#copyright {
+  margin-top: 20px;
 }
 
 .container-narrow > hr {
