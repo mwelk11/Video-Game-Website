@@ -1,7 +1,11 @@
 'use strict';
 
 app.controller('RankedListsCtrl', function($scope, gamesService) {
-    $scope.message = "RANKED LIST MESSAGE!!!";
+
+    $scope.formData = {};
+    $scope.sortType = 'Rating'; // default sort
+    $scope.sortReverse = true;
+    $scope.searchGames = '';
 
     $scope.getGames = function() {
         gamesService.getGames()
