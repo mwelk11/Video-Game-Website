@@ -7,9 +7,31 @@
         <section class="jumbotron center"></section>
     </div>
 
+    <form name="gameSearchForm" ng-submit="submitForm()">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <select class="form-control" id="genre" ng-model="formData.genre">
+                    <option selected>Choose...</option>
+                    <option value="Action-Adventure">Action-Adventure</option>
+                    <option value="Role-Playing">Role-Playing</option>
+                    <option value="Shooter">Shooter</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="publisherInput">Publisher:</label>
+                <input type="text" class="form-control" id="publisherInput" ng-model="formData.publisher" placeholder="Enter Publisher...">
+            </div>
+            <div class="form-group">
+                <label for="yearInput">Year:</label>
+                <input type="text" class="form-control" id="yearInput" ng-model="formData.year" placeholder="Enter Year...">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="reset" class="btn btn-primary" ng-click="getGames()">Clear</button>
+        </div>
+    </form>
     <form>
-        <div class="form-group">
-
+        <div class="form-group" id="searchField">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
                 <input type="text" class="form-control" placeholder="Search games" ng-model="searchGames">

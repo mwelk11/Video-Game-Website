@@ -2,9 +2,9 @@
   "name": "videogames",
   "private": true,
   "dependencies": {
-      "express": "^4.14.0",
-      "mysql": "^2.12.0",
-      "body-parser": "^1.15.2"
+    "body-parser": "^1.17.1",
+    "express": "^4.14.0",
+    "mysql": "^2.12.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

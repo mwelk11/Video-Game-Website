@@ -15,4 +15,15 @@ app.controller('RankedListsCtrl', function($scope, gamesService) {
                 console.log('ERROR in getGames(): ', error);
             });
     };
+
+    $scope.submitForm = function() {
+        console.log(">>>>> INSIDE submitForm()");
+        console.log($scope.formData);
+        gamesService.getSearchResults($scope.formData)
+            .then(function(data) {
+                $scope.games = data;
+            }, function(error) {
+                console.log('ERROR in getSearchResults(): ', error);
+            });
+    }
 });

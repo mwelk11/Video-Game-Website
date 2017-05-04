@@ -29,11 +29,10 @@ exports.get = function() {
 
 // Return all rows of specified table
 exports.getAll = function(table, done) {
-    if(!con) {
-        return done(new Error('Missing DB connection!'));
-    }
-    con.query('SELECT * FROM ' + table, function(err, rows) {
+    checkConnection(done);
+    con.query('SELECT * FROM ??', table, function(err, rows) {
         if(err) {
+            console.log("ERROR = " + err);
             return done(new Error('ERROR getting table rows: ', err));
         }
         return done(null, rows);
@@ -42,10 +41,8 @@ exports.getAll = function(table, done) {
 
 // Return game that matches incoming ID
 exports.getGame = function(id, done) {
-    if(!con) {
-        return done(new Error('Missing DB connection!'));
-    }
-    con.query('SELECT * FROM VideoGames WHERE ID = ' + id, function(err, rows) {
+    checkConnection(done);
+    con.query('SELECT * FROM VideoGames WHERE ID = ?', id, function(err, rows) {
         if(err) {
             return done(new Error('ERROR getting ID ' + id + ': ' + err));
         }
@@ -53,18 +50,51 @@ exports.getGame = function(id, done) {
     });
 }
 
+// Return games that match the search criteria
+exports.searchGames = function(params, done) {
+    var conditions = buildSearchConditions(params);
+    checkConnection(done);
+    con.query('SELECT * FROM VideoGames WHERE ' + conditions.where, conditions.values, function(err, rows) {
+        if(err) {
+            return done(new Error('ERROR getting search results: ' + err));
+        } else {
+            return done(null, rows);
+        }
+    });
+}
+
 // Clear specified table
 exports.clear = function(table, done) {
-    if(!con) {
-        return done(new Error('Missing DB connection!'));
-    }
-    con.query('TRUNCATE TABLE ' + table, done);
+    checkConnection(done);
+    con.query('TRUNCATE TABLE ??', table, done);
 }
 
 // Insert json object into specified table
 exports.insert = function(table, object, done) {
+    checkConnection(done);
+    con.query('INSERT INTO ?? SET ?', [table, object], done);
+}
+
+function buildSearchConditions(params) {
+    var conditions = [];
+    var values = [];
+    
+    for(var key in params) {
+        console.log("PARAMS ==> " + key + "=" + params[key]);
+        if(typeof params[key] !== 'undefined') {
+            conditions.push(key + " LIKE ?");
+            values.push("%" + params[key] + "%");
+        }
+    }
+
+    return {
+        where: conditions.length ? conditions.join(' AND ') : '1',
+        values: values
+    };
+}
+
+function checkConnection(done) {
     if(!con) {
         return done(new Error('Missing DB connection!'));
     }
-    con.query('INSERT INTO ' + table + ' SET ?', object, done);
 }
