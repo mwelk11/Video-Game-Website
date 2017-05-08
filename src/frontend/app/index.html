@@ -1,0 +1,92 @@
+<!doctype html>
+<html ng-app="videoGamesApp">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../bower_components/font-awesome/css/font-awesome.css">
+    <!-- endbuild -->
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">GAMING </a>
+                </div>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="rankedLists"><i class="fa fa-trophy"></i> Ranked Lists</a></li>
+                    <li><a href="addGame"><i class="fa fa-gamepad"></i> Add a Game</a></li>
+                    <li><a href="contact"><i class="fa fa-comment"></i> Contact</a></li>
+                </ul>
+                <div class="col-sm-3 col-md-3 pull-right">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="srch-term">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main">
+        <div ng-view=""></div>
+    </div>
+
+    <footer class="container">
+        <div class="row">
+            <p id="copyright" class="col-sm-4">&copy; 2016 Shred the Gnar</p>
+        </div>
+    </footer> 
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script-->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/MainCtrl.js"></script>
+        <script src="scripts/controllers/AddGameCtrl.js"></script>
+        <script src="scripts/controllers/RankedListsCtrl.js"></script>
+        <script src="scripts/controllers/ContactCtrl.js"></script>
+        <script src="scripts/services/gamesService.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
