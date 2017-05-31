@@ -11,14 +11,8 @@ describe('gamesServiceTest', function() {
     });
 
     describe('gamesService', function() {
-        var formData = {};
-        gamesService.getGames(formData)
-            .then(function(data) {
-                console.log('SUCCESS');
-                console.log(data);
-            }, function(err) {
-                console.log('ERROR in getGames()', err);
-            });
-
+        it('should pass', function() {
+            console.log('WOOO');
+        });
     });
 });
