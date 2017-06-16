@@ -17,6 +17,16 @@ app.post('/games', function(req, res) {
     });
 });
 
+app.post('/insertGame', function(req, res) {
+    db.insertGame(req.body, function(err, result) {
+        if(err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).json(result);
+        }
+    });
+});
+
 var server;
 db.connect(function(err) {
     if(err) {

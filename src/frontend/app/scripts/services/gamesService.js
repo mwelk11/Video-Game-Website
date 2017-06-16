@@ -15,17 +15,14 @@ app.service('gamesService', function($http, $q) {
             });
     };
 
-    this.insertCustomer = function(customer) {
-        return $http({
-            method : 'POST',
-            url : 'http://localhost:8081/addGame',
-            data : game,
-            headers : {'Content-Type': 'application/json'}
-        })
+    this.insertGame = function(formData) {
+        console.log('formData = ', formData);
+        return $http.post('http://localhost:8081/insertGame', formData)
         .then(function(response) {
             if(response.status == 200) {
-                return response.data; 
+                return response.data;
             } else {
+                console.log('>>> Invalid insertGame response');
                 return $q.reject(response.data);
             }
         }, function(response) {
@@ -33,7 +30,7 @@ app.service('gamesService', function($http, $q) {
         });
     };
 
-    this.deleteCustomer = function(customer) {
+    this.deleteGame = function(formData) {
         return $http({
             method : 'POST',
             url : 'http://localhost:8081/deleteGame',

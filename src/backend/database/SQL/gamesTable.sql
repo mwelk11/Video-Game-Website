@@ -1,4 +1,4 @@
-/*CREATE TABLE VideoGames
+CREATE TABLE VideoGames
 (
     ID int NOT NULL AUTO_INCREMENT,
     Title varchar(255),
@@ -7,7 +7,7 @@
     Year int,
     Rating float(10, 1),
     PRIMARY KEY (ID)
-);*/
+);
 
 INSERT INTO VideoGames (Title, Publisher, Genre, Year, Rating) VALUES ("Assassin's Creed: Syndicate", "Ubisoft", "Action-Adventure", 2015, 8.3);
 INSERT INTO VideoGames (Title, Publisher, Genre, Year, Rating) VALUES ("Battlefield 1", "EA DICE", "Shooter", 2016, 8.9);

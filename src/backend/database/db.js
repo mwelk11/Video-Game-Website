@@ -63,6 +63,18 @@ exports.getGames = function(params, done) {
     });
 }
 
+// Insert a game into the VideoGames table
+exports.insertGame = function(params, done) {
+    checkConnection(done);
+    con.query('INSERT INTO VideoGames SET ?', params, function(err, result) {
+        if(err) {
+            return done(new Error('ERROR inserting game: ' + err));
+        } else {
+            return done(null, result);
+        }
+    });
+}
+
 // Clear specified table
 exports.clear = function(table, done) {
     checkConnection(done);
@@ -72,7 +84,13 @@ exports.clear = function(table, done) {
 // Insert json object into specified table
 exports.insert = function(table, object, done) {
     checkConnection(done);
-    con.query('INSERT INTO ?? SET ?', [table, object], done);
+    con.query('INSERT INTO ?? SET ?', [table, object], function(err, result) {
+        if(err) {
+            return done(new Error('ERROR inserting into ' + table + ': ' + err));
+        } else {
+            return done(null, result);
+        }
+    });
 }
 
 function buildSearchConditions(params) {
